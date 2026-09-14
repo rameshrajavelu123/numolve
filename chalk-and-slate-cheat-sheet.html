@@ -1,0 +1,267 @@
+<title>Chalk & Slate Cheat Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --paper:      #ffffff;
+    --paper-deep: #f2f1ec;
+    --ink:        #20302a;
+    --ink-dim:    #56655e;
+    --ink-faint:  #97a29b;
+    --gold:       #b8860b;
+    --blue:       #1f7a9e;
+    --coral:      #b8452f;
+    --rule:       #dcded9;
+  }
+  *{ box-sizing:border-box; }
+  html{ font-size:17px; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image: radial-gradient(rgba(32,48,42,0.05) 1px, transparent 1.4px), radial-gradient(rgba(32,48,42,0.035) 1px, transparent 1.2px);
+    background-size: 3px 3px, 7px 7px; background-position: 0 0, 2px 3px;
+    mix-blend-mode: multiply; opacity:0.5;
+  }
+  .wrap{ position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:36px 28px 60px; }
+
+  header{ border-bottom:1px dashed var(--rule); padding-bottom:18px; margin-bottom:26px; display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .wordmark{ display:flex; align-items:baseline; gap:10px; }
+  .wordmark .glyph{ font-family:"IBM Plex Mono",monospace; font-size:1.4rem; color:var(--gold); transform:rotate(-4deg); display:inline-block; }
+  h1{ font-family:"Caveat", cursive; font-weight:700; font-size:2.3rem; margin:0; line-height:1; color:var(--ink); text-wrap:balance; }
+  header .tagline{ font-family:"Source Sans 3", sans-serif; font-size:0.92rem; color:var(--ink-dim); font-style:italic; max-width:38ch; margin:0; }
+
+  .group{ margin-bottom:30px; }
+  .group-title{
+    font-family:"Caveat", cursive; font-weight:700; font-size:1.5rem; color:var(--gold);
+    display:flex; align-items:center; gap:10px; margin:0 0 12px;
+  }
+  .group-title::after{ content:""; flex:1; height:1px; background:var(--rule); }
+
+  .card-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(255px,1fr)); gap:12px; }
+  .card{
+    background:var(--paper-deep); border:1px solid var(--rule); border-radius:8px;
+    padding:13px 14px 14px; display:flex; flex-direction:column; gap:6px;
+  }
+  .card h3{
+    margin:0; font-family:"Source Sans 3", sans-serif; font-weight:700; font-size:0.86rem;
+    color:var(--ink); letter-spacing:0.01em;
+  }
+  .card .syn{
+    font-family:"IBM Plex Mono", monospace; font-size:0.82rem; color:var(--blue);
+    background:rgba(31,122,158,0.07); border-radius:5px; padding:5px 8px; line-height:1.5;
+    word-break:break-word;
+  }
+  .card .syn + .syn{ margin-top:-2px; }
+  .card .fx{
+    font-family:"IBM Plex Mono", monospace; font-size:0.86rem; color:var(--ink);
+    line-height:1.55;
+  }
+  .card .note{ font-family:"Source Sans 3", sans-serif; font-size:0.78rem; color:var(--ink-faint); line-height:1.4; }
+  .card .fx sup{ font-size:0.7em; }
+  .card .fx sub{ font-size:0.7em; }
+
+  .wide{ grid-column: span 2; }
+  @media (max-width:560px){ .wide{ grid-column: span 1; } }
+
+  .rad{ white-space:nowrap; }
+  .rad .r{ border-top:1.3px solid currentColor; padding:0 2px; margin-left:1px; }
+
+  footer{ text-align:center; color:var(--ink-faint); font-size:0.78rem; padding-top:20px; border-top:1px dashed var(--rule); margin-top:10px; }
+  footer .glyph{ color:var(--gold); }
+
+  @media print{
+    body::before{ display:none; }
+    .card{ break-inside:avoid; }
+    .group{ break-inside:avoid-page; }
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="wordmark"><span class="glyph">∫∑π</span><h1>Chalk &amp; Slate — Cheat Sheet</h1></div>
+    <p class="tagline">One page of syntax and formulas for all 28 tools — keep it open alongside the app.</p>
+  </header>
+
+  <div class="group">
+    <h2 class="group-title">foundations</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Pre-Algebra</h3>
+        <div class="syn">6 + 2*(5-3)^2</div>
+        <div class="syn">84, 126 <span style="opacity:.6">(GCF/LCM)</span></div>
+        <div class="syn">3/4 + 1/6 &nbsp;·&nbsp; 15% of 200</div>
+        <div class="note">Long arithmetic, decimals, radicals, ratios, modulo, number line, mean/median/mode all live here too.</div>
+      </div>
+      <div class="card">
+        <h3>Statistics</h3>
+        <div class="syn">4, 8, 15, 16, 23, 42</div>
+        <div class="fx">mean = Σx / n &nbsp;·&nbsp; σ = <span class="rad">√<span class="r">Σ(x−x̄)²/n</span></span></div>
+        <div class="fx">z = (x − μ) / σ</div>
+        <div class="note">17 views of one list, plus standalone Probability &amp; Standard Normal Distribution.</div>
+      </div>
+      <div class="card">
+        <h3>Matrices</h3>
+        <div class="syn">[[1,2],[3,4]]  ·  [5,1]</div>
+        <div class="note">or toggle the 3×3 grid. Ops: A+B, A−B, A×B, det, A⁻¹, Aᵀ, tr(A), solve Ax=b.</div>
+      </div>
+      <div class="card">
+        <h3>Unit Conversion</h3>
+        <div class="note">Pick a category (Length, Mass, Temp, Area, Volume, Speed, Time, Pressure, Energy) — type into either box, live, both ways.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title">compute</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Calculate</h3>
+        <div class="syn">(3 + 5) * 2^3 - 10 / 4</div>
+        <div class="note">Order of operations, one step at a time: ( ) → ^ → × ÷ → + −</div>
+      </div>
+      <div class="card">
+        <h3>Simplify</h3>
+        <div class="syn">3x + 2x - 4 + x^2*x</div>
+        <div class="note">Combines like terms, folds constants, cancels common factors.</div>
+      </div>
+      <div class="card">
+        <h3>Logarithms</h3>
+        <div class="syn">log(1000, 10) &nbsp;·&nbsp; log(x,2) = 5</div>
+        <div class="fx">log<sub>b</sub>x = ln x / ln b</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title">calculus</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Derivatives</h3>
+        <div class="syn">sin(x) * x^2</div>
+        <div class="fx">d/dx[x<sup>n</sup>] = nx<sup>n−1</sup></div>
+      </div>
+      <div class="card">
+        <h3>Derivative Applications</h3>
+        <div class="note">Critical points at f′=0, classified by f″; tangent line y = f(a) + f′(a)(x − a).</div>
+      </div>
+      <div class="card">
+        <h3>Limits</h3>
+        <div class="syn">sin(x)/x  as x → 0</div>
+        <div class="note">Numeric, sampled from both sides — works even where the function is undefined.</div>
+      </div>
+      <div class="card">
+        <h3>Integrals</h3>
+        <div class="syn">3x^2 - sin(2x)</div>
+        <div class="fx">∫x<sup>n</sup>dx = x<sup>n+1</sup>/(n+1) + C</div>
+      </div>
+      <div class="card">
+        <h3>Integral Applications</h3>
+        <div class="fx">Area = ∫|f| dx &nbsp;·&nbsp; Between = ∫|f−g| dx</div>
+        <div class="fx">Volume (disk) = π∫f² dx</div>
+      </div>
+      <div class="card">
+        <h3>Integral Approximation</h3>
+        <div class="note">Left/right/midpoint Riemann, Trapezoidal, and Simpson's — side by side against the true value.</div>
+      </div>
+      <div class="card">
+        <h3>Series</h3>
+        <div class="syn">1/2^n, n = 0 to Infinity</div>
+        <div class="fx">geometric: S = a / (1 − r), |r| &lt; 1</div>
+      </div>
+      <div class="card">
+        <h3>ODE</h3>
+        <div class="syn">dy/dx = x + y,  y(0) = 1</div>
+        <div class="note">Solved numerically with 4th-order Runge–Kutta.</div>
+      </div>
+      <div class="card">
+        <h3>Multivariable Calculus</h3>
+        <div class="syn">x^2*y + sin(x*y)</div>
+        <div class="fx">D<sub>u</sub>f = ∇f · û</div>
+      </div>
+      <div class="card wide">
+        <h3>Laplace Transform — common pairs</h3>
+        <div class="fx">L{t<sup>n</sup>} = n!/s<sup>n+1</sup> &nbsp;&nbsp; L{e<sup>at</sup>} = 1/(s−a) &nbsp;&nbsp; L{sin ωt} = ω/(s²+ω²) &nbsp;&nbsp; L{cos ωt} = s/(s²+ω²)</div>
+      </div>
+      <div class="card">
+        <h3>Taylor/Maclaurin Series</h3>
+        <div class="syn">exp(x), center 0, order 5</div>
+        <div class="fx">f(x) ≈ Σ f<sup>(k)</sup>(a)/k! · (x−a)<sup>k</sup></div>
+      </div>
+      <div class="card">
+        <h3>Fourier Series</h3>
+        <div class="fx">a<sub>n</sub>,b<sub>n</sub> = (1/L)∫f(x)cos/sin(nπx/L)dx</div>
+      </div>
+      <div class="card">
+        <h3>Fourier Transform</h3>
+        <div class="fx">F(ω) = ∫f(t)e<sup>−iωt</sup> dt</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title">solve &amp; see</h2>
+    <div class="card-grid">
+      <div class="card wide">
+        <h3>Solve — the quadratic formula</h3>
+        <div class="syn">3x^2 - 5x - 2 = 0</div>
+        <div class="fx">x = (−b ± <span class="rad">√<span class="r">b² − 4ac</span></span>) / 2a</div>
+        <div class="note">Degree 2 gets a "Solve by:" picker — Quadratic Formula, Factoring (when the roots are rational), or Completing the Square.</div>
+      </div>
+      <div class="card">
+        <h3>Systems</h3>
+        <div class="syn">2x + y = 5<br>x − y = 1</div>
+        <div class="note">Up to 4 equations, solved by Gaussian elimination.</div>
+      </div>
+      <div class="card">
+        <h3>Graph</h3>
+        <div class="syn">sin(x)*3 &nbsp;·&nbsp; (x-1)^2+(y+2)^2=9</div>
+        <div class="note">Scroll to zoom, drag to pan, click a curve to trace its value.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title">geometry</h2>
+    <div class="card-grid">
+      <div class="card"><h3>circle(r)</h3><div class="fx">Area = πr² &nbsp;·&nbsp; C = 2πr</div></div>
+      <div class="card"><h3>rectangle(l,w)</h3><div class="fx">Area = lw &nbsp;·&nbsp; P = 2(l+w)</div></div>
+      <div class="card"><h3>triangle(a,b,c)</h3><div class="fx">Area = <span class="rad">√<span class="r">s(s−a)(s−b)(s−c)</span></span>, s=(a+b+c)/2</div></div>
+      <div class="card"><h3>right_triangle(a,b)</h3><div class="fx">c = <span class="rad">√<span class="r">a²+b²</span></span> &nbsp;·&nbsp; Area = ½ab</div></div>
+      <div class="card"><h3>sphere(r)</h3><div class="fx">V = (4/3)πr³ &nbsp;·&nbsp; SA = 4πr²</div></div>
+      <div class="card"><h3>cylinder(r,h)</h3><div class="fx">V = πr²h &nbsp;·&nbsp; SA = 2πrh + 2πr²</div></div>
+      <div class="card"><h3>cone(r,h)</h3><div class="fx">V = ⅓πr²h &nbsp;·&nbsp; SA = πrl + πr²</div></div>
+      <div class="card"><h3>box(l,w,h)</h3><div class="fx">V = lwh &nbsp;·&nbsp; SA = 2(lw+lh+wh)</div></div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title">input &amp; coaching</h2>
+    <div class="card-grid">
+      <div class="card"><h3>Scan a Photo</h3><div class="note">Upload an image — read locally in-browser (Tesseract.js), then review before sending it on.</div></div>
+      <div class="card"><h3>Voice Input</h3><div class="note">Speak a problem — "two x plus five equals eleven" gets cleaned up into math symbols for you to check.</div></div>
+      <div class="card"><h3>Check My Work</h3><div class="note">Paste your own line-by-line steps — each is checked against the one before it, with coaching on the first slip.</div></div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title">more tools</h2>
+    <div class="card-grid">
+      <div class="card wide">
+        <h3>Trig &amp; Triangles</h3>
+        <div class="note">Give any 3 of {a, b, c, A, B, C} (at least one side) — solves SSS, SAS, ASA/AAS, and the ambiguous SSA case.</div>
+        <div class="fx">Law of Sines: a/sinA = b/sinB = c/sinC &nbsp;&nbsp; Law of Cosines: c² = a²+b²−2ab·cosC</div>
+      </div>
+      <div class="card wide">
+        <h3>Identity highlights</h3>
+        <div class="fx">sin²x + cos²x = 1 &nbsp;&nbsp; sin2x = 2sinx·cosx &nbsp;&nbsp; cos2x = cos²x − sin²x</div>
+      </div>
+    </div>
+  </div>
+
+  <footer><span class="glyph">·</span> a companion to Chalk &amp; Slate — worked out one line at a time, entirely in your browser <span class="glyph">·</span></footer>
+</div>
